@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Melee Light</title>
+</head>
+<body>
+<script>
+const CDN = "https://cdn.jsdelivr.net/gh/formerlegend3323/melee-mother@master/dist/";
+
+fetch(CDN + "meleelight.html")
+  .then(r => r.text())
+  .then(html => {
+    html = html.replace(
+      "<head>",
+      '<head><base href="' + CDN + '">'
+    );
+
+    document.open();
+    document.write(html);
+    document.close();
+  })
+  .catch(err => {
+    document.body.innerHTML = "<pre>" + err + "</pre>";
+  });
+</script>
+</body>
+</html>
+
+
